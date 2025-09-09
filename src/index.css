@@ -4,4 +4,5 @@
   --color-cream: rgb(245, 243, 240);
   --color-txtLight: theme(colors.gray.500);
   --color-sage: rgb(147, 183, 109);
+  --color-warm: rgb(232, 226, 213);
 }
