@@ -68,7 +68,7 @@ const Calendar = () => {
         days.push(
           <div
             key={day}
-            className={`p-2 text-center cursor-pointer rounded
+            className={`p-2 text-center cursor-pointer rounded text-xs
               ${!isSameMonth(day, monthStart) ? "text-gray-500" : ""}
               ${
                 isSameDay(day, selectedDate)
@@ -98,7 +98,6 @@ const Calendar = () => {
       id="Calendar"
       className="bg-white rounded-2xl p-6 shadow-sm border border-warm"
     >
-      <h3 className="text-lg font-medium text-gray-800 mb-4">Calendar</h3>
       {renderHeader()}
       {renderDays()}
       {renderDates()}
