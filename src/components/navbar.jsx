@@ -24,7 +24,11 @@ const Navbar = () => {
         </nav>
         <div id="Account-Section" className="flex items-center space-x-4">
           <i class="fa-solid fa-bell fa-lg p-2 text-gray-600 hover:text-sage transition-colors cursor-pointer"></i>
-          <span>Avatar</span>
+          <img
+            src="../../assets/Uto.jpg"
+            className="w-10 h-10 rounded-full border-2 border-sage mx-auto"
+            alt="Avatar"
+          />
         </div>
       </div>
     </div>
