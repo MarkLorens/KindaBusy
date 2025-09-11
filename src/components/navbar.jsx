@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Task from "../pages/task";
+
 const Navbar = () => {
   return (
     <div id="Navbar" className="max-w-7xl mx-auto px-6 py-4">
@@ -12,12 +15,18 @@ const Navbar = () => {
           id="Items-Section"
           className="hidden md:flex items-center space-x-8 text-gray-600"
         >
-          <span className="hover:text-sage transition-colors font-medium cursor-pointer">
+          <Link
+            className="hover:text-sage transition-colors font-medium cursor-pointer"
+            to={"/"}
+          >
             Dashboard
-          </span>
-          <span className="hover:text-sage transition-colors font-medium cursor-pointer">
+          </Link>
+          <Link
+            className="hover:text-sage transition-colors font-medium cursor-pointer"
+            to={"/task"}
+          >
             Tasks
-          </span>
+          </Link>
           <span className="hover:text-sage transition-colors font-medium cursor-pointer">
             Community
           </span>
