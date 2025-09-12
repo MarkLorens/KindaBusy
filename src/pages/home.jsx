@@ -22,7 +22,7 @@ const Home = () => {
                     className="w-24 h-24 rounded-full border-4 border-sage mx-auto"
                   ></img>
                   <button className="absolute -bottom-1 -right-1 w-8 h-8 bg-sage text-white rounded-full flex items-center justify-center hover:bg-sage/80 transition-colors cursor-pointer">
-                    <i class="fa-solid fa-camera fa-sm"></i>
+                    <i className="fa-solid fa-camera fa-sm"></i>
                   </button>
                 </div>
                 <h2 className="text-xl font-medium text-gray-800 mt-4">
@@ -45,14 +45,14 @@ const Home = () => {
                   id="Profile-Mobile"
                   className="flex items-center space-x-3 text-gray-600"
                 >
-                  <i class="fa-solid fa-phone"></i>
+                  <i className="fa-solid fa-phone"></i>
                   <span>+81 (123) 323-169</span>
                 </div>
                 <div
                   id="Profile-Location"
                   className="flex items-center space-x-3 text-gray-600"
                 >
-                  <i class="fa-solid fa-location-dot"></i>
+                  <i className="fa-solid fa-location-dot"></i>
                   <span>Paradise, Heaven</span>
                 </div>
               </div>
@@ -62,7 +62,7 @@ const Home = () => {
                     Edit Profile
                   </button>
                   <button className="p-2 border border-warm rounded-xl hover:bg-warm transition-colors cursor-pointer">
-                    <i class="fa-solid fa-share-nodes text-gray-600"></i>
+                    <i className="fa-solid fa-share-nodes text-gray-600"></i>
                   </button>
                 </div>
               </div>
@@ -77,17 +77,17 @@ const Home = () => {
               <div id="Notes-Section" className="space-y-3">
                 <div className="flex items-center justify-between border-l-4 border-yellow-300 p-3 rounded-r-lg bg-yellow-50">
                   <p className="text-sm text-gray-800">Stream Apex Legends</p>
-                  <i class="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"></i>
+                  <i className="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"></i>
                 </div>
                 <div className="flex items-center justify-between border-l-4 border-blue-300 p-3 rounded-r-lg bg-blue-50">
                   <p className="text-sm text-gray-800">Save cats from trees</p>
-                  <i class="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transformr"></i>
+                  <i className="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transformr"></i>
                 </div>
                 <div className="flex items-center justify-between border-l-4 border-green-300 p-3 rounded-r-lg bg-green-50">
                   <p className="text-sm text-gray-800">
                     Remove Teemo from League
                   </p>
-                  <i class="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"></i>
+                  <i className="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"></i>
                 </div>
               </div>
               <div id="Add-Note">
@@ -165,19 +165,19 @@ const Home = () => {
                 </h3>
                 <div className="text-center">
                   <div className="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-sage to-[#B5A491]">
-                    <i class="fa-solid fa-music text-white text-2xl"></i>
+                    <i className="fa-solid fa-music text-white text-2xl"></i>
                   </div>
                   <h4 className="font-medium text-gray-800">Ditto</h4>
                   <p className="font-medium text-gray-800">By New Jeans</p>
                   <div className="flex items-center justify-center space-x-4 mt-4">
                     <button className="p-2 rounded-full transition-colors hover:bg-cream cursor-pointer">
-                      <i class="fa-solid fa-backward"></i>
+                      <i className="fa-solid fa-backward"></i>
                     </button>
                     <button className="p-3 bg-sage text-white rounded-full hover:bg-sage/80 transition-colors cursor-pointer">
-                      <i class="fa-solid fa-play"></i>
+                      <i className="fa-solid fa-play"></i>
                     </button>
                     <button className="p-2 rounded-full transition-colors hover:bg-cream cursor-pointer">
-                      <i class="fa-solid fa-forward"></i>
+                      <i className="fa-solid fa-forward"></i>
                     </button>
                   </div>
                 </div>
