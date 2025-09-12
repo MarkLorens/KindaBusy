@@ -1,7 +1,9 @@
 import Calendar from "../components/calendar";
 import Navbar from "../components/navbar";
+import { useModal } from "../../ModalContext.jsx";
 
 const Home = () => {
+  const { openModal } = useModal();
   return (
     <div className="bg-cream">
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-warm sticky z-50">
@@ -106,7 +108,10 @@ const Home = () => {
                 <h3 className="text-lg font-medium text-gray-800">
                   Today's Tasks
                 </h3>
-                <button className="text-sage text-xl font-bold hover:text-sage/80 transition-colors cursor-pointer">
+                <button
+                  className="text-sage text-xl font-bold hover:text-sage/80 transition-colors cursor-pointer"
+                  onClick={openModal}
+                >
                   +
                 </button>
               </div>

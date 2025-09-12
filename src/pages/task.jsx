@@ -1,9 +1,28 @@
 import Navbar from "../components/navbar";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useModal } from "../../ModalContext.jsx";
 
 const Tasks = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("Sort By");
+  const { openModal } = useModal();
+  const dropDownRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   const options = ["Sort by deadline", "Sort by priority"];
   return (
@@ -21,7 +40,10 @@ const Tasks = () => {
             />
             <i className="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
           </div>
-          <button className="w-48 bg-sage/80 p-4 text-white rounded-2xl font-medium hover:bg-sage/60 hover:-translate-y-0.5 transition-all cursor-pointer">
+          <button
+            onClick={openModal}
+            className="w-48 bg-sage/80 p-4 text-white rounded-2xl font-medium hover:bg-sage/60 hover:-translate-y-0.5 transition-all cursor-pointer"
+          >
             Add a new task
           </button>
         </div>
@@ -34,8 +56,7 @@ const Tasks = () => {
             className="flex items-center justify-between mb-4"
           >
             <h3 className="text-lg font-medium text-gray-800">Your Tasks</h3>
-            <div className="relative inline-block w-48">
-              {/* Dropdown button */}
+            <div className="relative inline-block w-48" ref={dropDownRef}>
               <button
                 onClick={() => setOpen(!open)}
                 className="w-full flex items-center justify-between border border-warm rounded-xl py-2 px-6 text-sm text-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent"
@@ -43,8 +64,6 @@ const Tasks = () => {
                 <span className="truncate text-gray-600 font-medium">
                   {selected}
                 </span>
-
-                {/* icon wrapper is a flex child so the glyph centers reliably */}
                 <span className="ml-2 flex items-center justify-center flex-shrink-0">
                   <i
                     className={`fa-solid fa-chevron-down fa-xs transform transition-transform ${
@@ -54,8 +73,6 @@ const Tasks = () => {
                   />
                 </span>
               </button>
-
-              {/* Dropdown menu */}
               {open && (
                 <ul className="absolute z-10 mt-2 w-full bg-white border border-warm rounded-xl shadow-sm">
                   {options.map((option, idx) => (
