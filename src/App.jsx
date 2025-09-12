@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/login";
-import Home from "./pages/home";
-import Task from "./pages/task";
+import Login from "./pages/Login.jsx";
+import Home from "./pages/Home.jsx";
+import Task from "./pages/Task.jsx";
 import { ModalProvider } from "../ModalContext.jsx";
 import { AuthContext } from "./context/authcontext.jsx";
-import { Protected } from "./components/protected.jsx";
-import { GuestOnly } from "./components/guestOnly.jsx";
+import { Protected } from "./components/Protected.jsx";
+import { GuestOnly } from "./components/GuestOnly.jsx";
 
 function App() {
   return (

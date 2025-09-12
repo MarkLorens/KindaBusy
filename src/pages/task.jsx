@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar.jsx";
 import { useState, useEffect, useRef } from "react";
 import { UseModal } from "../../ModalContext.jsx";
 
