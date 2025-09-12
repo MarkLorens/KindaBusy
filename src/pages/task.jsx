@@ -1,11 +1,11 @@
 import Navbar from "../components/navbar";
 import { useState, useEffect, useRef } from "react";
-import { useModal } from "../../ModalContext.jsx";
+import { UseModal } from "../../ModalContext.jsx";
 
 const Tasks = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("Sort By");
-  const { openModal } = useModal();
+  const { openModal } = UseModal();
   const dropDownRef = useRef();
 
   useEffect(() => {

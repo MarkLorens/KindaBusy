@@ -1,9 +1,9 @@
 import Calendar from "../components/calendar";
 import Navbar from "../components/navbar";
-import { useModal } from "../../ModalContext.jsx";
+import { UseModal } from "../../ModalContext.jsx";
 
 const Home = () => {
-  const { openModal } = useModal();
+  const { openModal } = UseModal();
   return (
     <div className="bg-cream">
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-warm sticky z-50">

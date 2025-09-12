@@ -119,6 +119,6 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function useModal() {
+export function UseModal() {
   return useContext(ModalContext);
 }
