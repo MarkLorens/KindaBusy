@@ -10,7 +10,7 @@ const Tasks = () => {
 
   useEffect(() => {
     function handleClickOutside(e) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (dropDownRef.current && !dropDownRef.current.contains(e.target)) {
         setOpen(false);
       }
     }
@@ -59,7 +59,7 @@ const Tasks = () => {
             <div className="relative inline-block w-48" ref={dropDownRef}>
               <button
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center justify-between border border-warm rounded-xl py-2 px-6 text-sm text-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent"
+                className="w-full cursor-pointer flex items-center justify-between border border-warm rounded-xl py-2 px-6 text-sm text-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent"
               >
                 <span className="truncate text-gray-600 font-medium">
                   {selected}
