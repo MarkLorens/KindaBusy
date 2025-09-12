@@ -1,4 +1,26 @@
+import { auth } from "../firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const formLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const naviagte = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault(); // stop page reload
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password).then(
+        naviagte("/")
+      );
+      console.log("Logged in:", cred.user);
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+
   return (
     <div className="flex flex-1 text-center justify-center items-center">
       <div
@@ -11,7 +33,7 @@ const formLogin = () => {
           </h2>
           <p className="text-gray-600">Sign in to your account to continue</p>
         </div>
-        <form action="#" className="space-y-6" id="Login-Form">
+        <form onSubmit={handleLogin} className="space-y-6" id="Login-Form">
           <div id="Email-Form" className="text-left">
             <label
               htmlFor="email"
@@ -24,6 +46,8 @@ const formLogin = () => {
                 type="email"
                 className="w-full py-3 pl-10 border border-gray-300 rounded-lg"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <i className="fa-solid fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
@@ -40,6 +64,8 @@ const formLogin = () => {
                 type="password"
                 className="w-full py-3 pl-10 border border-gray-300 rounded-lg"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <i className="fa-solid fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>

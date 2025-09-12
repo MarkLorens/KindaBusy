@@ -4,6 +4,7 @@ import { UseModal } from "../../ModalContext.jsx";
 
 const Home = () => {
   const { openModal } = UseModal();
+
   return (
     <div className="bg-cream">
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-warm sticky z-50">

@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
-import Task from "../pages/task";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Sign-out error:", error);
+      });
+  };
+
   return (
     <div id="Navbar" className="max-w-7xl mx-auto px-6 py-4">
       <div className="flex items-center justify-between">
@@ -37,6 +51,7 @@ const Navbar = () => {
             src="../../assets/Uto.jpg"
             className="w-10 h-10 rounded-full border-2 border-sage mx-auto"
             alt="Avatar"
+            onClick={handleSignOut}
           />
         </div>
       </div>
