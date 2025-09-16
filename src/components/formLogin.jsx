@@ -24,7 +24,7 @@ const formLogin = () => {
   return (
     <div className="flex flex-1 text-center justify-center items-center">
       <div
-        id="Right-Section"
+        id="Right-Section-Login"
         className="z-10 max-w-md text-center w-full space-y-6"
       >
         <div id="Title-Section" className="mb-8">
