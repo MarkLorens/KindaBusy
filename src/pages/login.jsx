@@ -3,20 +3,13 @@ import FormLeftSection from "../components/formLeftSection";
 import FormLogin from "../components/formLogin";
 import FormRegister from "../components/FormRegister";
 import { AnimatePresence, motion } from "framer-motion";
+import { slideVariants } from "../lib/anim/motionVariants";
 
 const Login = () => {
   const [register, setRegister] = useState(false);
 
   const toggleForm = () => {
     setRegister((prev) => !prev);
-  };
-
-  const variants = {
-    enterFromTop: { y: -100, opacity: 0 },
-    enterFromBottom: { y: 100, opacity: 0 },
-    center: { y: 0, opacity: 1 },
-    exitToTop: { y: -100, opacity: 0 },
-    exitToBottom: { y: 100, opacity: 0 },
   };
 
   return (
@@ -27,7 +20,7 @@ const Login = () => {
         {register ? (
           <motion.div
             key="register"
-            variants={variants}
+            variants={slideVariants}
             initial="enterFromBottom"
             animate="center"
             exit="exitToBottom"
@@ -39,7 +32,7 @@ const Login = () => {
         ) : (
           <motion.div
             key="login"
-            variants={variants}
+            variants={slideVariants}
             initial="enterFromTop"
             animate="center"
             exit="exitToTop"

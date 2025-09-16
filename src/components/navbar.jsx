@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import avatar from "../assets/Uto.jpg";
+import avatar from "../lib/assets/Uto.jpg";
 
 const Navbar = () => {
   const navigate = useNavigate();

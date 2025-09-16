@@ -1,10 +1,10 @@
 import Calendar from "../components/calendar.jsx";
 import Navbar from "../components/Navbar.jsx";
 import { UseModal } from "../context/ModalContext.jsx";
-import ProfilePic from "../assets/Uto.jpg";
-import HoF1 from "../assets/KindaBusy.PNG";
-import HoF2 from "../assets/SMI-Group-Logo.png";
-import HoF3 from "../assets/ggmen.png";
+import ProfilePic from "../lib/assets/Uto.jpg";
+import HoF1 from "../lib/assets/KindaBusy.PNG";
+import HoF2 from "../lib/assets/SMI-Group-Logo.png";
+import HoF3 from "../lib/assets/ggmen.png";
 
 const Home = () => {
   const { openModal } = UseModal();
