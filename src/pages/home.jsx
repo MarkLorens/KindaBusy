@@ -1,6 +1,10 @@
 import Calendar from "../components/calendar.jsx";
 import Navbar from "../components/Navbar.jsx";
 import { UseModal } from "../context/ModalContext.jsx";
+import ProfilePic from "../assets/Uto.jpg";
+import HoF1 from "../assets/KindaBusy.PNG";
+import HoF2 from "../assets/SMI-Group-Logo.png";
+import HoF3 from "../assets/ggmen.png";
 
 const Home = () => {
   const { openModal } = UseModal();
@@ -17,7 +21,7 @@ const Home = () => {
               <div id="Main-Profile" className="text-center mb-6">
                 <div id="Profile-Title" className="relative inline-block">
                   <img
-                    src="../assets/Uto.jpg"
+                    src={ProfilePic}
                     alt="profile picture"
                     className="w-24 h-24 rounded-full border-4 border-sage mx-auto"
                   ></img>
@@ -208,7 +212,7 @@ const Home = () => {
                 >
                   <div className="flex items-center space-x-3">
                     <img
-                      src="../assets/KindaBusy.png"
+                      src={HoF1}
                       alt="profile picture"
                       className="w-12 h-12 rounded-full"
                     ></img>
@@ -224,7 +228,7 @@ const Home = () => {
                 >
                   <div className="flex items-center space-x-3">
                     <img
-                      src="../assets/SMI-Group-Logo.png"
+                      src={HoF2}
                       alt="profile picture"
                       className="w-12 h-12 rounded-full"
                     ></img>
@@ -240,7 +244,7 @@ const Home = () => {
                 >
                   <div className="flex items-center space-x-3">
                     <img
-                      src="../assets/ggmen.png"
+                      src={HoF3}
                       alt="profile picture"
                       className="w-12 h-12 rounded-full"
                     ></img>
