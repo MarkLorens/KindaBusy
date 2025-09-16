@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const formLogin = () => {
+const formLogin = ({ onToggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -40,7 +40,7 @@ const formLogin = () => {
   return (
     <div className="flex flex-1 text-center justify-center items-center">
       <div
-        id="Right-Section"
+        id="Right-Section-Login"
         className="z-10 max-w-md text-center w-full space-y-6"
       >
         <div id="Title-Section" className="mb-8">
@@ -144,8 +144,8 @@ const formLogin = () => {
           <span className="text-gray-700">
             Don't have an account?{" "}
             <span
+              onClick={onToggle}
               className="text-md text-blue-400 cursor-pointer hover:text-blue-500 transition-colors"
-              onClick={() => navigate("/signup")}
             >
               Sign up here
             </span>

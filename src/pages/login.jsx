@@ -1,11 +1,48 @@
+import { useState } from "react";
 import FormLeftSection from "../components/FormLeftSection";
 import FormLogin from "../components/FormLogin";
+import FormRegister from "../components/FormRegister";
+import { AnimatePresence, motion } from "framer-motion";
+import { slideVariants } from "../lib/anim/motionVariants";
 
 const Login = () => {
+  const [register, setRegister] = useState(false);
+
+  const toggleForm = () => {
+    setRegister((prev) => !prev);
+  };
+
   return (
-    <div className="w-full h-screen flex">
+    <div className="w-full h-screen flex overflow-hidden">
       <FormLeftSection />
-      <FormLogin />
+
+      <AnimatePresence mode="wait">
+        {register ? (
+          <motion.div
+            key="register"
+            variants={slideVariants}
+            initial="enterFromBottom"
+            animate="center"
+            exit="exitToBottom"
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="flex-1 flex justify-center items-center"
+          >
+            <FormRegister onToggle={toggleForm} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="login"
+            variants={slideVariants}
+            initial="enterFromTop"
+            animate="center"
+            exit="exitToTop"
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="flex-1 flex justify-center items-center"
+          >
+            <FormLogin onToggle={toggleForm} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

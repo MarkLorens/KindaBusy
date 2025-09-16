@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar.jsx";
 import { useState, useEffect, useRef } from "react";
-import { UseModal } from "../../ModalContext.jsx";
+import { UseModal } from "../context/ModalContext.jsx";
 
 const Tasks = () => {
   const [open, setOpen] = useState(false);

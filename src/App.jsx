@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import Task from "./pages/Task.jsx";
-import { ModalProvider } from "../ModalContext.jsx";
+import { ModalProvider } from "./context/ModalContext.jsx";
 import { AuthContext } from "./context/authcontext.jsx";
 import { Protected } from "./components/Protected.jsx";
 import { GuestOnly } from "./components/GuestOnly.jsx";

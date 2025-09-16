@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import avatar from "../lib/assets/Uto.jpg";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Navbar = () => {
         <div id="Account-Section" className="flex items-center space-x-4">
           <i className="fa-solid fa-bell fa-lg p-2 text-gray-600 hover:text-sage transition-colors cursor-pointer"></i>
           <img
-            src="../../assets/Uto.jpg"
+            src={avatar}
             className="w-10 h-10 rounded-full border-2 border-sage mx-auto"
             alt="Avatar"
             onClick={() => handleSignOut()}
