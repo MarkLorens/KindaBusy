@@ -1,6 +1,6 @@
 import { use, useState } from "react";
 
-const FormRegister = () => {
+const FormRegister = ({ onToggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -16,8 +16,8 @@ const FormRegister = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Glad to have you here!
           </h2>
+          <p className="text-gray-600">Sign up for an account here</p>
         </div>
-        <p className="text-gray-600">Sign up for an account here</p>
         <form action="#" className="space-y-6" id="Register-Form">
           <div id="Email-Form" className="text-left">
             <label
@@ -101,6 +101,17 @@ const FormRegister = () => {
             >
               Sign Up
             </button>
+          </div>
+          <div id="SignUp">
+            <span className="text-gray-700">
+              Already have an account?{" "}
+              <span
+                onClick={onToggle}
+                className="text-md text-blue-400 cursor-pointer hover:text-blue-500 transition-colors"
+              >
+                Sign in here
+              </span>
+            </span>
           </div>
         </form>
       </div>

@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const formLogin = () => {
+const formLogin = ({ onToggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -122,7 +122,10 @@ const formLogin = () => {
         <div id="SignUp">
           <span className="text-gray-700">
             Don't have an account?{" "}
-            <span className="text-md text-blue-400 cursor-pointer hover:text-blue-500 transition-colors">
+            <span
+              onClick={onToggle}
+              className="text-md text-blue-400 cursor-pointer hover:text-blue-500 transition-colors"
+            >
               Sign up here
             </span>
           </span>
