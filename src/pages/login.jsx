@@ -1,5 +1,5 @@
-import FormLeftSection from "../components/formLeftSection";
-import FormLogin from "../components/formLogin";
+import FormLeftSection from "../components/FormLeftSection";
+import FormLogin from "../components/FormLogin";
 
 const Login = () => {
   return (

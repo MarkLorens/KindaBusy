@@ -1,4 +1,4 @@
-import Calendar from "../components/calendar.jsx";
+import Calendar from "../components/Calendar.jsx";
 import Navbar from "../components/Navbar.jsx";
 import { UseModal } from "../../ModalContext.jsx";
 

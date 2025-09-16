@@ -27,7 +27,7 @@ const formLeftSection = () => {
           </div>
           <div className="backdrop-blur-sm bg-black/10 rounded-lg p-6 border border-black/10">
             <i
-              class="fa-solid fa-calendar-days fa-lg"
+              className="fa-solid fa-calendar-days fa-lg"
               style={{ marginBottom: "15px" }}
             ></i>
             <h3 className="font-semibold text-sm">Task Calendar</h3>
@@ -37,7 +37,7 @@ const formLeftSection = () => {
           </div>
           <div className="backdrop-blur-sm bg-black/10 rounded-lg p-6 border border-black/10">
             <i
-              class="fa-solid fa-note-sticky fa-lg"
+              className="fa-solid fa-note-sticky fa-lg"
               style={{ marginBottom: "15px" }}
             ></i>
             <h3 className="font-semibold text-sm">Sticky Notes</h3>
@@ -47,7 +47,7 @@ const formLeftSection = () => {
           </div>
           <div className="backdrop-blur-sm bg-black/10 rounded-lg p-6 border border-black/10">
             <i
-              class="fa-solid fa-music fa-lg"
+              className="fa-solid fa-music fa-lg"
               style={{ marginBottom: "15px" }}
             ></i>
             <h3 className="font-semibold text-sm">Song of the Day</h3>
@@ -59,7 +59,7 @@ const formLeftSection = () => {
           className="gap-3 backdrop-blur-sm bg-black/10 rounded-lg p-6 border border-black/10"
         >
           <div className="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-people-group fa-lg"></i>
+            <i className="fa-solid fa-people-group fa-lg"></i>
             <h3 className="font-semibold">Community Profiles</h3>
           </div>
           <div className="my-2">

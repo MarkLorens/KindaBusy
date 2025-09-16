@@ -1,5 +1,5 @@
 import { auth } from "../firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,17 +7,33 @@ const formLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // stop page reload
+    e.preventDefault();
     try {
-      const cred = await signInWithEmailAndPassword(auth, email, password).then(
-        naviagte("/")
-      );
+      const cred = await signInWithEmailAndPassword(auth, email, password);
       console.log("Logged in:", cred.user);
-    } catch (e) {
-      setError(e.message);
+      navigate("/");
+    } catch (err) {
+      let msg = "Something went wrong. Please try again.";
+      switch (err.code) {
+        case "auth/invalid-email":
+          msg = "Please enter a valid email address.";
+          break;
+        case "auth/user-not-found":
+          msg = "User not found. Please check your email.";
+          break;
+        case "auth/invalid-credential":
+          msg = "Invalid email or password.";
+          break;
+        case "auth/too-many-requests":
+          msg = "Too many failed attempts. Please try again later.";
+          break;
+      }
+      console.log(err.code);
+
+      setError(msg);
     }
   };
 
@@ -70,6 +86,11 @@ const formLogin = () => {
               <i className="fa-solid fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
           </div>
+          {error && (
+            <p className="text-red-500 text-sm text-right font-medium">
+              {error}
+            </p>
+          )}
           <div id="Login-Options" className="flex justify-between">
             <div id="Radio-Field" className="flex items-center">
               <input
@@ -122,7 +143,10 @@ const formLogin = () => {
         <div id="SignUp">
           <span className="text-gray-700">
             Don't have an account?{" "}
-            <span className="text-md text-blue-400 cursor-pointer hover:text-blue-500 transition-colors">
+            <span
+              className="text-md text-blue-400 cursor-pointer hover:text-blue-500 transition-colors"
+              onClick={() => navigate("/signup")}
+            >
               Sign up here
             </span>
           </span>
