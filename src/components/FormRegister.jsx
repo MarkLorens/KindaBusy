@@ -1,10 +1,45 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { use, useState } from "react";
+import { auth } from "../firebase";
 
 const FormRegister = ({ onToggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    let pwdMismatch = false;
+    if (password !== confirmPassword) pwdMismatch = true;
+    if (pwdMismatch) {
+      setError("Password does not match confirm password.");
+      return;
+    }
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.log(err);
+      let msg = "";
+      switch (err.code) {
+        case "auth/invalid-email":
+          msg = "Please enter a valid email address";
+          break;
+        case "auth/missing-email":
+          msg = "Email cannot be empty!";
+          break;
+        case "auth/missing-password":
+          msg = "Password cannot be empty!";
+          break;
+        case "auth/weak-password":
+          msg = "Please enter at least 6 characters for your password.";
+          break;
+      }
+
+      setError(msg);
+    }
+  };
 
   return (
     <div className="flex flex-1 text-center justify-center items-center">
@@ -18,7 +53,11 @@ const FormRegister = ({ onToggle }) => {
           </h2>
           <p className="text-gray-600">Sign up for an account here</p>
         </div>
-        <form action="#" className="space-y-6" id="Register-Form">
+        <form
+          onSubmit={handleRegister}
+          className="space-y-6"
+          id="Register-Form"
+        >
           <div id="Email-Form" className="text-left">
             <label
               htmlFor="Email-Form"
@@ -94,6 +133,11 @@ const FormRegister = ({ onToggle }) => {
               <i className="fa-solid fa-repeat absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
           </div>
+          {error && (
+            <p className="text-red-500 text-sm text-right font-medium">
+              {error}
+            </p>
+          )}
           <div id="Submit-Form">
             <button
               type="submit"

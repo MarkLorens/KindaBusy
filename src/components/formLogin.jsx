@@ -1,20 +1,16 @@
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const formLogin = ({ onToggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
-      console.log("Logged in:", cred.user);
-      navigate("/");
     } catch (err) {
       let msg = "Something went wrong. Please try again.";
       switch (err.code) {
@@ -31,8 +27,6 @@ const formLogin = ({ onToggle }) => {
           msg = "Too many failed attempts. Please try again later.";
           break;
       }
-      console.log(err.code);
-
       setError(msg);
     }
   };
