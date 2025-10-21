@@ -1,6 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { use, useState } from "react";
 import { auth } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const FormRegister = ({ onToggle }) => {
   const [email, setEmail] = useState("");
@@ -8,6 +10,24 @@ const FormRegister = ({ onToggle }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
+
+  function generateUser() {
+    let titles = [
+      "Sir New User",
+      "He Who Registers",
+      "The Archlich of Naxxramas",
+    ];
+    let occupations = ["Profile Builder", "Task Hunter", "The Council of Six"];
+    let handles = ["@untitled_project", "@X_Denier", "@The_Defiler"];
+
+    const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    return {
+      title: pick(titles),
+      occupation: pick(occupations),
+      handle: pick(handles),
+    };
+  }
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -19,8 +39,20 @@ const FormRegister = ({ onToggle }) => {
     }
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
+      const uid = cred.user.uid;
+      const newUser = generateUser();
+
+      try {
+        await setDoc(doc(db, "users", uid), {
+          name: username,
+          title: newUser.title,
+          occupation: newUser.occupation,
+          handle: newUser.handle,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     } catch (err) {
-      console.log(err);
       let msg = "";
       switch (err.code) {
         case "auth/invalid-email":
