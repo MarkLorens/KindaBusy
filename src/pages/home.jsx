@@ -5,9 +5,31 @@ import ProfilePic from "../lib/assets/Uto.jpg";
 import HoF1 from "../lib/assets/KindaBusy.PNG";
 import HoF2 from "../lib/assets/SMI-Group-Logo.png";
 import HoF3 from "../lib/assets/ggmen.png";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../firebase.js";
+import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
 
 const Home = () => {
   const { openModal } = UseModal();
+  const { currentUser } = getAuth();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!currentUser) return;
+      const docRef = doc(db, "users", currentUser.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setData(docSnap.data());
+      } else {
+        console.log("hit");
+      }
+    };
+
+    fetchData();
+  }, [currentUser]);
 
   return (
     <div className="bg-cream">

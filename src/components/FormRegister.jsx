@@ -44,10 +44,14 @@ const FormRegister = ({ onToggle }) => {
 
       try {
         await setDoc(doc(db, "users", uid), {
-          name: username,
+          username: username,
           title: newUser.title,
           occupation: newUser.occupation,
-          handle: newUser.handle,
+          contact: cred.user.email,
+          location: "Hidden",
+          jam: "https://www.youtube.com/watch?v=gxEPV4kolz0",
+          tasks: {},
+          quickTasks: {},
         });
       } catch (err) {
         console.log(err);

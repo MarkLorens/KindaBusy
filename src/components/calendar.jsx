@@ -29,13 +29,19 @@ const Calendar = () => {
       id="Calendar-Month-Buttons"
       className="flex items-center justify-between mb-5"
     >
-      <button className="p-1 text-gray-600 hover:bg-cream rounded cursor-pointer">
+      <button
+        className="p-1 text-gray-600 hover:bg-cream rounded cursor-pointer"
+        onClick={prevMonth}
+      >
         {"<"}
       </button>
       <span className="font-medium text-gray-800">
         {format(currentMonth, "MMMM yyyy")}
       </span>
-      <button className="p-1 text-gray-600 hover:bg-cream rounded cursor-pointer">
+      <button
+        className="p-1 text-gray-600 hover:bg-cream rounded cursor-pointer"
+        onClick={nextMonth}
+      >
         {">"}
       </button>
     </div>
