@@ -145,40 +145,28 @@ const Home = () => {
                   +
                 </button>
               </div>
-              <div id="Task-Items" className="space-y-4">
-                <div className="flex items-center space-x-4 p-3 bg-cream rounded-xl">
-                  <input
-                    type="checkbox"
-                    className="w-5 h-5 text-sage rounded border-gray-300"
-                  />
-                  <span className="flex-1 text-gray-700">Wake Up</span>
-                  <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
-                    High
-                  </span>
+              {data?.tasks && Object.keys(data.tasks).length > 0 ? (
+                Object.entries(data.tasks).map(([id, task]) => (
+                  <div id="Task-Items" className="space-y-4">
+                    <div key={id} className="flex items-center space-x-4 p-3">
+                      <input
+                        type="checkbox"
+                        className="w-5 h-5 text-sage rounded border-gray-300"
+                      />
+                      <span className="flex-1 text-gray-700">
+                        {task.description}
+                      </span>
+                      <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
+                        {task.priorityLevel}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <p>No Task at hand</p>
                 </div>
-                <div className="flex items-center space-x-4 p-3">
-                  <input
-                    type="checkbox"
-                    className="w-5 h-5 text-sage rounded border-gray-300"
-                  />
-                  <span className="flex-1 text-gray-700">Finish a WIP</span>
-                  <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
-                    Medium
-                  </span>
-                </div>
-                <div className="flex items-center space-x-4 p-3">
-                  <input
-                    type="checkbox"
-                    className="w-5 h-5 text-sage rounded border-gray-300"
-                  />
-                  <span className="flex-1 text-gray-700">
-                    Help God mow the lawn
-                  </span>
-                  <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
-                    Low
-                  </span>
-                </div>
-              </div>
+              )}
             </div>
             <div
               id="Middle-Tools"
