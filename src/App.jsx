@@ -6,40 +6,43 @@ import { ModalProvider } from "./context/ModalContext.jsx";
 import { AuthContext } from "./context/authcontext.jsx";
 import { Protected } from "./components/Protected.jsx";
 import { GuestOnly } from "./components/GuestOnly.jsx";
+import { UserDataProvider } from "./context/UserDataContext.jsx";
 
 function App() {
   return (
     <AuthContext>
-      <BrowserRouter>
-        <ModalProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Protected>
-                  <Home />
-                </Protected>
-              }
-            />
-            <Route
-              path="/task"
-              element={
-                <Protected>
-                  <Task />
-                </Protected>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <GuestOnly>
-                  <Login />
-                </GuestOnly>
-              }
-            />
-          </Routes>
-        </ModalProvider>
-      </BrowserRouter>
+      <UserDataProvider>
+        <BrowserRouter>
+          <ModalProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Protected>
+                    <Home />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/task"
+                element={
+                  <Protected>
+                    <Task />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <GuestOnly>
+                    <Login />
+                  </GuestOnly>
+                }
+              />
+            </Routes>
+          </ModalProvider>
+        </BrowserRouter>
+      </UserDataProvider>
     </AuthContext>
   );
 }
