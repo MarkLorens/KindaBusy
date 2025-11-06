@@ -173,31 +173,27 @@ const Home = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center"
             >
               <Calendar />
-              <div
-                id="Song-Otd"
-                className="bg-white rounded-2xl p-6 shadow-sm border border-warm"
-              >
-                <h3 className="text-lg font-medium text-gray-800 mb-6">
+              <div id="Song-Otd">
+                <h3 className="text-lg font-medium text-gray-800 mb-6 bg-white rounded-2xl p-6 shadow-sm border border-warm">
                   Current Jam
                 </h3>
-                <div className="text-center">
-                  <div className="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-sage to-[#B5A491]">
-                    <i className="fa-solid fa-music text-white text-2xl"></i>
-                  </div>
-                  <h4 className="font-medium text-gray-800">Ditto</h4>
-                  <p className="font-medium text-gray-800">By New Jeans</p>
-                  <div className="flex items-center justify-center space-x-4 mt-4">
-                    <button className="p-2 rounded-full transition-colors hover:bg-cream cursor-pointer">
-                      <i className="fa-solid fa-backward"></i>
-                    </button>
-                    <button className="p-3 bg-sage text-white rounded-full hover:bg-sage/80 transition-colors cursor-pointer">
-                      <i className="fa-solid fa-play"></i>
-                    </button>
-                    <button className="p-2 rounded-full transition-colors hover:bg-cream cursor-pointer">
-                      <i className="fa-solid fa-forward"></i>
-                    </button>
-                  </div>
-                </div>
+                {data?.profile?.jam ? (
+                  <iframe
+                    src={`https://open.spotify.com/embed/track/${
+                      data.profile.jam.split("/track/")[1].split("?")[0]
+                    }`}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-xl"
+                  />
+                ) : (
+                  <p className="text-sm text-gray-500 italic">
+                    No jam linked yet 🎧
+                  </p>
+                )}
               </div>
             </div>
             <div
