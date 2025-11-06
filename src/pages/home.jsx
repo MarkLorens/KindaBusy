@@ -6,6 +6,7 @@ import HoF1 from "../lib/assets/KindaBusy.PNG";
 import HoF2 from "../lib/assets/SMI-Group-Logo.png";
 import HoF3 from "../lib/assets/ggmen.png";
 import { useUserData } from "../context/UserDataContext.jsx";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { openModal } = UseModal();
@@ -60,9 +61,12 @@ const Home = () => {
               </div>
               <div id="Profile-Edit" className="border-t border-warm mt-6 pt-6">
                 <div className="flex space-x-3">
-                  <button className="flex-1 bg-sage text-white py-2 px-4 rounded-xl text-sm font-medium cursor-pointer hover:bg-sage/80 transition-colors">
+                  <Link
+                    to="/editprofile"
+                    className="flex-1 bg-sage text-white text-center py-4 rounded-xl text-sm font-medium cursor-pointer hover:bg-sage/80 transition-colors"
+                  >
                     Edit Profile
-                  </button>
+                  </Link>
                   <button className="p-2 border border-warm rounded-xl hover:bg-warm transition-colors cursor-pointer">
                     <i className="fa-solid fa-share-nodes text-gray-600"></i>
                   </button>
