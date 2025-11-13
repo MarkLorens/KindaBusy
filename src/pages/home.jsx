@@ -48,7 +48,7 @@ const Home = () => {
                   id="Profile-Email"
                   className="flex items-center space-x-3 text-gray-600"
                 >
-                  <i className="fa-solid fa-envelope"></i>
+                  <i className="fa-solid fa-link"></i>
                   <span>{userData.profile.contact}</span>
                 </div>
                 <div

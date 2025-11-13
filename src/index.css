@@ -5,4 +5,6 @@
   --color-txtLight: theme(colors.gray.500);
   --color-sage: rgb(147, 183, 109);
   --color-warm: rgb(232, 226, 213);
+  --tw-border-opacity: 1;
+  --color-lightgrey: rgb(211 211 211 / var(--tw-border-opacity));
 }
