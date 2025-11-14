@@ -7,6 +7,7 @@ import HoF2 from "../lib/assets/SMI-Group-Logo.png";
 import HoF3 from "../lib/assets/ggmen.png";
 import { useUserData } from "../context/UserDataContext.jsx";
 import { Link } from "react-router-dom";
+import ProfileContact from "../components/ProfileContact.jsx";
 
 const Home = () => {
   const { openModal } = UseModal();
@@ -48,8 +49,7 @@ const Home = () => {
                   id="Profile-Contact"
                   className="flex items-center space-x-3 text-gray-600"
                 >
-                  <i className="fa-solid fa-link"></i>
-                  <span>{userData.profile.contact}</span>
+                  <ProfileContact contact={userData.profile.contact} />
                 </div>
                 <div
                   id="Profile-Location"
@@ -155,7 +155,7 @@ const Home = () => {
                 ))
               ) : (
                 <div>
-                  <p>No Task at hand</p>
+                  <p>No task at hand.</p>
                 </div>
               )}
             </div>

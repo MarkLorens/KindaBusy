@@ -1,33 +1,10 @@
-import { useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
 import ProfilePic from "../lib/assets/Uto.jpg";
+import ProfileContact from "../components/ProfileContact";
+import { useState } from "react";
 
 const editProfile = () => {
-  const contacts = {
-    phone: "fa-solid fa-phone text-gray-600",
-    x: "fa-brands fa-x-twitter",
-    instagram: "fa-brands fa-instagram text-red-500",
-    facebook: "fa-brands fa-facebook text-blue-700",
-    linkedin: "fa-brands fa-linkedin text-blue-800",
-    tiktok: "fa-brands fa-tiktok",
-    thread: "fa-brands fa-threads",
-  };
   const [contactInput, setConctactInput] = useState("");
-
-  const iconClass = useMemo(() => {
-    const value = contactInput.toLowerCase();
-
-    if (value.includes("instagram")) return contacts.instagram;
-    if (value.includes("facebook")) return contacts.facebook;
-    if (value.includes("linkedin")) return contacts.linkedin;
-    if (value.includes("tiktok")) return contacts.tiktok;
-    if (value.includes("thread")) return contacts.thread;
-    if (value.includes("x.com")) return contacts.x;
-    if (value.match(/^\+?\d/)) return contacts.phone;
-
-    return "fa-solid fa-link"; // default icon
-  }, [contactInput]);
-
   return (
     <div className="bg-cream">
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-warm sticky z-50">
@@ -144,9 +121,6 @@ const editProfile = () => {
                       Contact
                     </label>
                   </div>
-                  <div id="Contact-Help-Section">
-                    <i className="fa-solid fa-add text-gray-700 hover:text-sage cursor-pointer transition text-sm font-medium"></i>
-                  </div>
                 </div>
                 <div className="relative">
                   <input
@@ -157,10 +131,12 @@ const editProfile = () => {
                     onChange={(e) => setConctactInput(e.target.value)}
                     className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
                   />
-                  <i
-                    className={`${iconClass} absolute right-3 top-1/2 transform -translate-y-1/2`}
-                    id="Contact-Icon-Form"
-                  ></i>
+                  <div>
+                    <span className="text-xs text-gray-600">
+                      Your contact will be displayed as:
+                    </span>
+                  </div>
+                  <ProfileContact contact={contactInput} />
                 </div>
               </div>
               <div id="Jam-Field-Section" className="col-span-2">
