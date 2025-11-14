@@ -6,11 +6,15 @@ import HoF1 from "../lib/assets/KindaBusy.PNG";
 import HoF2 from "../lib/assets/SMI-Group-Logo.png";
 import HoF3 from "../lib/assets/ggmen.png";
 import { useUserData } from "../context/UserDataContext.jsx";
+import { Context as AuthContext } from "../context/AuthContext.jsx";
 import { Link } from "react-router-dom";
 import ProfileContact from "../components/ProfileContact.jsx";
+import StickyNotes from "../components/home/StickyNotes.jsx";
+import { useContext } from "react";
 
 const Home = () => {
   const { openModal } = UseModal();
+  const { user } = useContext(AuthContext);
   const { userData, loading } = useUserData();
 
   if (loading) return <p>Loading...</p>;
@@ -73,49 +77,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div
-              id="Sticky-Notes"
-              className="mt-6 bg-white p-6 rounded-2xl shadow-sm border border-warm"
-            >
-              <h3 className="text-lg font-medium text-gray-800 mb-4">
-                Sticky Notes
-              </h3>
-
-              <div id="Notes-Section" className="space-y-3">
-                {userData?.quickTasks &&
-                Object.keys(userData.quickTasks).length > 0 ? (
-                  Object.entries(userData.quickTasks).map(
-                    ([id, task], index) => (
-                      <div
-                        key={id}
-                        className={`flex items-center justify-between border-l-4 p-3 rounded-r-lg ${
-                          index % 3 === 0
-                            ? "border-yellow-300 bg-yellow-50"
-                            : index % 3 === 1
-                            ? "border-blue-300 bg-blue-50"
-                            : "border-green-300 bg-green-50"
-                        }`}
-                      >
-                        <p className="text-sm text-gray-800">
-                          {task.description}
-                        </p>
-                        <i className="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"></i>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p className="text-sm text-gray-500 italic">
-                    No sticky notes yet — add one below!
-                  </p>
-                )}
-              </div>
-
-              <div id="Add-Note">
-                <button className="w-full mt-4 py-2 text-sm border border-warm rounded-xl text-gray-800 hover:bg-warm transition-colors cursor-pointer">
-                  + Add Note
-                </button>
-              </div>
-            </div>
+            <StickyNotes userData={userData} user={user} />
           </div>
           <div id="Main-Dashboard" className="lg:col-span-2 space-y-6">
             <div
