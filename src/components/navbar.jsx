@@ -20,12 +20,12 @@ const Navbar = () => {
   return (
     <div id="Navbar" className="max-w-7xl mx-auto px-6 py-4">
       <div className="flex items-center justify-between">
-        <div id="Logo-Section" className="space-x-3 flex items-center">
+        <Link to="/" id="Logo-Section" className="space-x-3 flex items-center">
           <div className="w-10 h-10 bg-sage rounded-xl flex items-center justify-center">
             <i className="fa-solid fa-user fa-lg text-white"></i>
           </div>
           <h1 className="text-xl font-medium text-gray-800">KindaBusy</h1>
-        </div>
+        </Link>
         <nav
           id="Items-Section"
           className="hidden md:flex items-center space-x-8 text-gray-600"

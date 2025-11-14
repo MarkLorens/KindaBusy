@@ -23,6 +23,7 @@ const FormRegister = ({ onToggle }) => {
     const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
     return {
+      username: username,
       title: pick(titles),
       occupation: pick(occupations),
       handle: pick(handles),
@@ -44,14 +45,16 @@ const FormRegister = ({ onToggle }) => {
 
       try {
         await setDoc(doc(db, "users", uid), {
-          username: username,
-          title: newUser.title,
-          occupation: newUser.occupation,
-          contact: cred.user.email,
-          location: "Hidden",
-          jam: "https://www.youtube.com/watch?v=gxEPV4kolz0",
-          tasks: {},
-          quickTasks: {},
+          profile: {
+            username: newUser.username,
+            title: newUser.title,
+            occupation: newUser.occupation,
+            contact: cred.user.email,
+            location: "Hidden",
+            jam: "https://open.spotify.com/track/5afr7qIb8edsF2lfvFHa1n?si=3daeb5d6975a4658",
+            tasks: {},
+            quickTasks: {},
+          },
         });
       } catch (err) {
         console.log(err);

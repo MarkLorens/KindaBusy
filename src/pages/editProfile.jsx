@@ -17,7 +17,6 @@ const editProfile = () => {
   const iconClass = useMemo(() => {
     const value = contactInput.toLowerCase();
 
-    if (value.match(/^\+\d[\d\s\-\(\)]*$/)) return contacts.phone;
     if (value.includes("instagram")) return contacts.instagram;
     if (value.includes("facebook")) return contacts.facebook;
     if (value.includes("linkedin")) return contacts.linkedin;

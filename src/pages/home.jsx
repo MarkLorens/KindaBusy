@@ -45,7 +45,7 @@ const Home = () => {
               </div>
               <div id="Profile-Particulars" className="space-y-4">
                 <div
-                  id="Profile-Email"
+                  id="Profile-Contact"
                   className="flex items-center space-x-3 text-gray-600"
                 >
                   <i className="fa-solid fa-link"></i>
