@@ -30,6 +30,11 @@ export const UserDataProvider = ({ children }) => {
     return () => unsub();
   }, [user, authLoading]);
 
+  //----ACTIONS
+
+  //----Edit Profile Actions-----
+
+  //----Sticky Notes Actions-----
   const addNewQuickTask = async (newTask) => {
     if (!user) return;
 
@@ -52,6 +57,7 @@ export const UserDataProvider = ({ children }) => {
       [`quickTasks.${qtId}`]: deleteField(),
     });
   };
+  //----End of Sticky Notes Actions-----
 
   return (
     <UserDataContext.Provider

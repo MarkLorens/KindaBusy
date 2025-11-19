@@ -2,9 +2,13 @@ import Navbar from "../components/Navbar";
 import ProfilePic from "../lib/assets/Uto.jpg";
 import ProfileContact from "../components/ProfileContact";
 import { useState } from "react";
+import { useUserData } from "../context/UserDataContext";
 
 const editProfile = () => {
   const [contactInput, setConctactInput] = useState("");
+  const { userData, loading } = useUserData();
+
+  if (loading) return <p>Loading...</p>;
   return (
     <div className="bg-cream">
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-warm sticky z-50">
@@ -58,7 +62,7 @@ const editProfile = () => {
                 <input
                   type="text"
                   id="username"
-                  placeholder="$Username"
+                  placeholder={userData.profile.username}
                   className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
                 />
               </div>
@@ -73,7 +77,7 @@ const editProfile = () => {
                 <input
                   type="text"
                   id="location"
-                  placeholder="$Location"
+                  placeholder={userData.profile.location}
                   className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
                 />
               </div>
@@ -88,7 +92,7 @@ const editProfile = () => {
                 <input
                   type="text"
                   id="title"
-                  placeholder="$Title"
+                  placeholder={userData.profile.title}
                   className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
                 />
               </div>
@@ -103,7 +107,7 @@ const editProfile = () => {
                 <input
                   type="text"
                   id="occupation"
-                  placeholder="$Occupation"
+                  placeholder={userData.profile.occupation}
                   className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
                 />
               </div>
@@ -126,7 +130,7 @@ const editProfile = () => {
                   <input
                     type="text"
                     id="contact"
-                    placeholder="$Contact"
+                    placeholder={userData.profile.contact}
                     value={contactInput}
                     onChange={(e) => setConctactInput(e.target.value)}
                     className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
@@ -150,7 +154,7 @@ const editProfile = () => {
                 <input
                   type="text"
                   id="jam"
-                  placeholder="$Jam"
+                  placeholder={userData.profile.jam}
                   className="w-full border border-lightgrey rounded px-4 py-3 focus:outline-none focus:border-sage text-sm transition"
                 />
               </div>

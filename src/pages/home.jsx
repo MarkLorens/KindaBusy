@@ -7,6 +7,7 @@ import HoF3 from "../lib/assets/ggmen.png";
 import { useUserData } from "../context/UserDataContext.jsx";
 import StickyNotes from "../components/home/StickyNotes.jsx";
 import ProfileCard from "../components/home/ProfileCard.jsx";
+import JamCard from "../components/home/JamCard.jsx";
 
 const Home = () => {
   const { openModal } = UseModal();
@@ -54,7 +55,7 @@ const Home = () => {
                       <span className="flex-1 text-gray-700">
                         {task.description}
                       </span>
-                      <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
+                      <span className="text-xs text-gray-500 bg-warm/50 px-2 py-1 rounded-full">
                         {task.priorityLevel}
                       </span>
                     </div>
@@ -71,31 +72,7 @@ const Home = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center"
             >
               <Calendar />
-              <div
-                id="Song-Otd"
-                className="bg-white rounded-2xl p-6 shadow-sm border border-warm"
-              >
-                <h3 className="text-lg font-medium text-gray-800 mb-6">
-                  Current Jam
-                </h3>
-                {userData?.profile?.jam ? (
-                  <iframe
-                    src={`https://open.spotify.com/embed/track/${
-                      userData.profile.jam.split("/track/")[1].split("?")[0]
-                    }`}
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    className="rounded-xl"
-                  />
-                ) : (
-                  <p className="text-sm text-gray-500 italic">
-                    No jam linked yet 🎧
-                  </p>
-                )}
-              </div>
+              <JamCard />
             </div>
             <div
               id="Bottom-Section"
