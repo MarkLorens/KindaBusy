@@ -1,20 +1,15 @@
 import Calendar from "../components/Calendar.jsx";
 import Navbar from "../components/Navbar.jsx";
 import { UseModal } from "../context/ModalContext.jsx";
-import ProfilePic from "../lib/assets/Uto.jpg";
 import HoF1 from "../lib/assets/KindaBusy.PNG";
 import HoF2 from "../lib/assets/SMI-Group-Logo.png";
 import HoF3 from "../lib/assets/ggmen.png";
 import { useUserData } from "../context/UserDataContext.jsx";
-import { Context as AuthContext } from "../context/AuthContext.jsx";
-import { Link } from "react-router-dom";
-import ProfileContact from "../components/ProfileContact.jsx";
 import StickyNotes from "../components/home/StickyNotes.jsx";
-import { useContext } from "react";
+import ProfileCard from "../components/home/ProfileCard.jsx";
 
 const Home = () => {
   const { openModal } = UseModal();
-  const { user } = useContext(AuthContext);
   const { userData, loading } = useUserData();
 
   if (loading) return <p>Loading...</p>;
@@ -26,58 +21,8 @@ const Home = () => {
       <main id="Main-Content" className="max-w-7xl mx-auto px-6 py-8">
         <div id="Main-Grid" className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div id="Profile-Section" className="lg:col-span-1">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-warm">
-              <div id="Main-Profile" className="text-center mb-6">
-                <div id="Profile-Title" className="relative inline-block">
-                  <img
-                    src={ProfilePic}
-                    alt="profile picture"
-                    className="w-24 h-24 rounded-full border-4 border-sage mx-auto"
-                  ></img>
-                  <button className="absolute -bottom-1 -right-1 w-8 h-8 bg-sage text-white rounded-full flex items-center justify-center hover:bg-sage/80 transition-colors cursor-pointer">
-                    <i className="fa-solid fa-camera fa-sm"></i>
-                  </button>
-                </div>
-                <h2 className="text-xl font-medium text-gray-800 mt-4">
-                  {userData.profile.username}
-                </h2>
-                <p className="text-gray-600 text-sm">
-                  {userData.profile.title}
-                </p>
-                <p className="text-gray-500 text-sm mt-1">
-                  {userData.profile.occupation}
-                </p>
-              </div>
-              <div id="Profile-Particulars" className="space-y-4">
-                <div
-                  id="Profile-Contact"
-                  className="flex items-center space-x-3 text-gray-600"
-                >
-                  <ProfileContact contact={userData.profile.contact} />
-                </div>
-                <div
-                  id="Profile-Location"
-                  className="flex items-center space-x-3 text-gray-600"
-                >
-                  <i className="fa-solid fa-location-dot"></i>
-                  <span>{userData.profile.location}</span>
-                </div>
-              </div>
-              <div id="Profile-Edit" className="border-t border-warm mt-6 pt-6">
-                <div className="flex space-x-3">
-                  <Link
-                    to="/editprofile"
-                    className="flex-1 bg-sage text-white text-center py-4 rounded-xl text-sm font-medium cursor-pointer hover:bg-sage/80 transition-colors"
-                  >
-                    Edit Profile
-                  </Link>
-                  <button className="p-2 border border-warm rounded-xl hover:bg-warm transition-colors cursor-pointer">
-                    <i className="fa-solid fa-share-nodes text-gray-600"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <StickyNotes userData={userData} user={user} />
+            <ProfileCard />
+            <StickyNotes />
           </div>
           <div id="Main-Dashboard" className="lg:col-span-2 space-y-6">
             <div

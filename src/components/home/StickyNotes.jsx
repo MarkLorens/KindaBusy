@@ -67,6 +67,7 @@ export default function StickyNotes() {
               type="text"
               id="Add-Sticky-Note-Field"
               placeholder="What have you got?"
+              value={newTask}
               onChange={(e) => setNewTask(e.target.value)}
               className="border border-warm w-full mt-4 py-2 px-2 text-sm rounded-lg text-gray-800 focus:outline-sage"
             />
