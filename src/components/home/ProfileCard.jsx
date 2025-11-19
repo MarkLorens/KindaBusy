@@ -1,7 +1,7 @@
 import { useUserData } from "../../context/UserDataContext";
 import ProfilePic from "../../lib/assets/Uto.jpg";
 import { Link } from "react-router-dom";
-import ProfileContact from "../../components/ProfileContact.jsx";
+import ProfileContact from "../helper/ProfileContact.jsx";
 
 export default function ProfileCard() {
   const { userData } = useUserData();

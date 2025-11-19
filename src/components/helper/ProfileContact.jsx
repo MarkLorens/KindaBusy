@@ -1,4 +1,4 @@
-import { getContactInfo } from "../utils/contactParser";
+import { getContactInfo } from "../../utils/contactParser";
 
 export default function ProfileContact({ contact }) {
   const info = getContactInfo(contact);

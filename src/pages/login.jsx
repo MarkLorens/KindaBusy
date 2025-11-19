@@ -1,7 +1,7 @@
 import { useState } from "react";
-import FormLeftSection from "../components/FormLeftSection";
-import FormLogin from "../components/FormLogin";
-import FormRegister from "../components/FormRegister";
+import FormLeftSection from "../components/auth/formLeftSection";
+import FormLogin from "../components/auth/formLogin";
+import FormRegister from "../components/auth/FormRegister";
 import { AnimatePresence, motion } from "framer-motion";
 import { slideVariants } from "../lib/anim/motionVariants";
 

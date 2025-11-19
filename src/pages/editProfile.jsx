@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/helper/navbar";
 import ProfilePic from "../lib/assets/Uto.jpg";
-import ProfileContact from "../components/ProfileContact";
+import ProfileContact from "../components/helper/ProfileContact";
 import { useState } from "react";
 import { useUserData } from "../context/UserDataContext";
 

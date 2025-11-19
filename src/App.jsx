@@ -5,8 +5,8 @@ import Task from "./pages/Task.jsx";
 import EditProfile from "./pages/editProfile.jsx";
 import { ModalProvider } from "./context/ModalContext.jsx";
 import { AuthContext } from "./context/authcontext.jsx";
-import { Protected } from "./components/Protected.jsx";
-import { GuestOnly } from "./components/GuestOnly.jsx";
+import { Protected } from "./components/helper/protected.jsx";
+import { GuestOnly } from "./components/helper/guestOnly.jsx";
 import { UserDataProvider } from "./context/UserDataContext.jsx";
 
 function App() {
