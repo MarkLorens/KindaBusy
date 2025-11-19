@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { onSnapshot, doc } from "firebase/firestore";
+import { onSnapshot, doc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from "../firebase";
 import { Context as AuthContext } from "./AuthContext";
 
@@ -30,8 +30,33 @@ export const UserDataProvider = ({ children }) => {
     return () => unsub();
   }, [user, authLoading]);
 
+  const addNewQuickTask = async (newTask) => {
+    if (!user) return;
+
+    const ref = doc(db, "users", user.uid);
+    const quickTaskId = `qt_${crypto.randomUUID()}`;
+
+    try {
+      await updateDoc(ref, {
+        [`quickTasks.${quickTaskId}`]: { description: newTask },
+      });
+    } catch (err) {
+      console.error("Error adding quick task:", err);
+    }
+  };
+
+  const deleteQuickTask = async (qtId) => {
+    const ref = doc(db, "users", user.uid);
+
+    await updateDoc(ref, {
+      [`quickTasks.${qtId}`]: deleteField(),
+    });
+  };
+
   return (
-    <UserDataContext.Provider value={{ userData, loading }}>
+    <UserDataContext.Provider
+      value={{ userData, loading, addNewQuickTask, deleteQuickTask }}
+    >
       {children}
     </UserDataContext.Provider>
   );

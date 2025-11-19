@@ -100,7 +100,7 @@ const Home = () => {
               </div>
               {userData?.tasks && Object.keys(userData.tasks).length > 0 ? (
                 Object.entries(userData.tasks).map(([id, task]) => (
-                  <div id="Task-Items" className="space-y-4">
+                  <div id="Task-Items" key={id} className="space-y-4">
                     <div key={id} className="flex items-center space-x-4 p-3">
                       <input
                         type="checkbox"

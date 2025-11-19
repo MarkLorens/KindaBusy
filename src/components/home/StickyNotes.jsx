@@ -1,27 +1,25 @@
-import { setDoc } from "firebase/firestore";
 import { useState } from "react";
-import { db } from "../../firebase";
+import { useUserData } from "../../context/UserDataContext";
 
-export default function StickyNotes({ userData, user }) {
-  const [openDialogue, setOpenDialogue] = useState(false);
+export default function StickyNotes() {
+  const [newQuickTaskField, setnewQuickTaskField] = useState(false);
   const [newTask, setNewTask] = useState("");
+  const { userData, addNewQuickTask, deleteQuickTask } = useUserData();
 
   const handleNewQuickTask = async (e) => {
     e.preventDefault();
-    const uid = user.uid;
-    console.log(uid);
-    try {
-      await setDoc(db, "users", uid, {
-        quickTasks: { description: newTask },
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    await addNewQuickTask(newTask);
+    setNewTask("");
   };
 
-  const toggleDialogue = () => {
-    setOpenDialogue((prev) => !prev);
+  const handleDeleteTask = async (id) => {
+    await deleteQuickTask(id);
   };
+
+  const toggleNewQuickTaskDialogue = () => {
+    setnewQuickTaskField((prev) => !prev);
+  };
+
   return (
     <div
       id="Sticky-Notes"
@@ -43,7 +41,10 @@ export default function StickyNotes({ userData, user }) {
               }`}
             >
               <p className="text-sm text-gray-800">{task.description}</p>
-              <i className="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"></i>
+              <i
+                onClick={() => handleDeleteTask(id)}
+                className="fa-solid fa-trash text-sm cursor-pointer text-red-400 hover:-translate-y-0.5 transition-transform"
+              ></i>
             </div>
           ))
         ) : (
@@ -53,10 +54,10 @@ export default function StickyNotes({ userData, user }) {
         )}
       </div>
 
-      {openDialogue ? (
+      {newQuickTaskField ? (
         <div id="Add-Note">
           <button
-            onClick={toggleDialogue}
+            onClick={toggleNewQuickTaskDialogue}
             className="w-full mt-4 py-2 text-sm rounded-xl text-red-white bg-red-400 text-white hover:bg-red-400/80 hover:text-white transition cursor-pointer"
           >
             X Cancel
@@ -80,7 +81,7 @@ export default function StickyNotes({ userData, user }) {
       ) : (
         <div id="Add-Note">
           <button
-            onClick={toggleDialogue}
+            onClick={toggleNewQuickTaskDialogue}
             className="w-full mt-4 py-2 text-sm text-white bg-sage rounded-xl hover:bg-sage/80 transition-colors cursor-pointer"
           >
             + Add Note
