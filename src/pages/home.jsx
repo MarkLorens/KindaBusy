@@ -6,6 +6,7 @@ import ProfileCard from "../components/home/ProfileCard.jsx";
 import JamCard from "../components/home/JamCard.jsx";
 import TaskCard from "../components/home/TaskCard.jsx";
 import Placeholder from "../components/home/Placeholder.jsx";
+import LoadingScreen from "../components/helper/LoadingScreen.jsx";
 
 const Home = () => {
   const { loading } = useUserData();
@@ -16,7 +17,8 @@ const Home = () => {
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-warm sticky z-50">
         <Navbar />
       </div>
-      <main id="Main-Content" className="max-w-7xl mx-auto px-6 py-8">
+      <LoadingScreen />
+      {/* <main id="Main-Content" className="max-w-7xl mx-auto px-6 py-8">
         <div id="Main-Grid" className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div id="Profile-Section" className="lg:col-span-1">
             <ProfileCard />
@@ -34,7 +36,7 @@ const Home = () => {
             <Placeholder />
           </div>
         </div>
-      </main>
+      </main> */}
     </div>
   );
 };
